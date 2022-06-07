@@ -20,13 +20,23 @@
 }
 */
 
+resource "random_integer" "random" {
+  min = 1
+  max = 100
+
+}
+
 resource "aws_instance" "web" {
+  count = var.create_instance ? 1 : 0
   ami                         = data.aws_ssm_parameter.ami.value
   instance_type               = var.instance_type
   associate_public_ip_address = true
   user_data                   = file("${path.module}/app1-http.sh")
   vpc_security_group_ids      = [aws_security_group.allow_http.id]
 
+tags_all = {
+  Name = "web-${random_integer.random.id}"
+}
 
 }
 
@@ -34,9 +44,9 @@ data "aws_ssm_parameter" "ami" {
   name = "latest_golden_ami"
 }
 
-resource "aws_security_group" "allow_http" {
+resource  "aws_security_group" "allow_http" {
   name        = "allow_http"
-  description = "Allow http inbound traffic"
+  description = "Allow http inbound traffic 1"
   # vpc_id      = aws_vpc.main.id
 
   ingress {
@@ -44,7 +54,7 @@ resource "aws_security_group" "allow_http" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["50.213.196.246/32"]
+    cidr_blocks = ["98.218.155.26/32"]
   }
 
 
@@ -53,7 +63,7 @@ resource "aws_security_group" "allow_http" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["50.213.196.246/32"]
+    cidr_blocks = ["98.218.155.26/32"]
   }
   egress {
     from_port   = 0
@@ -63,6 +73,8 @@ resource "aws_security_group" "allow_http" {
   }
 
 }
+
+ 
 
 
 

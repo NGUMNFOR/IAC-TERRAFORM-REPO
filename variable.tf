@@ -17,3 +17,9 @@ variable "myregion" {
   default     = "us-east-1"
   description = "This is for my region"
 }
+
+variable "create_instance" {
+  type = bool
+  default = true
+  description = " create instance"
+}
