@@ -7,8 +7,8 @@
 */
 
 variable "instance_type" {
-  type        = string
-  default     = "t3.micro"
+  type        = list
+  default     = ["t3.micro", "t2.micro"]
   description = "This is for my instance type"
 }
 

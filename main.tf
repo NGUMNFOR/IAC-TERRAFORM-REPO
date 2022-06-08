@@ -1,5 +1,5 @@
 
-/*data "aws_ami" "Golden_ami" {
+data "aws_ami" "Golden_ami" {
   most_recent      = true
   owners           = ["amazon"]
 
@@ -25,7 +25,7 @@ resource "random_integer" "random" {
   max = 100
 
 }
-
+# Count is only used for conditions
 resource "aws_instance" "web" {
   count = var.create_instance ? 1 : 0
   ami                         = data.aws_ssm_parameter.ami.value
