@@ -9,7 +9,7 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region  = var.myregion
+  region  = var.aws_region
   profile = "default"
 
   default_tags {

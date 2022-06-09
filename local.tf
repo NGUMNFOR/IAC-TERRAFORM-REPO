@@ -15,5 +15,6 @@ locals {
     component_name          = "IAC-TERRAFORM-REPO"
 
   }
+  vpc_id = aws_vpc.ngumvpc.id
 
 }

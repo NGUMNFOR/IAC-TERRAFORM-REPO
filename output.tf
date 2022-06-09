@@ -1,7 +1,7 @@
 
 # Fetching for just ip addresses
 
-output "public_ip" {
+/*output "public_ip" {
   description = "public ip2"
   value       = aws_instance.web[*].public_ip
   sensitive   = false
@@ -31,6 +31,6 @@ output "ec2_arn" {
   sensitive   = false
 
 }
-
+*/
 
 
