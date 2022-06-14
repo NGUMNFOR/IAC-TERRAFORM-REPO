@@ -28,10 +28,10 @@ resource "aws_vpc" "ngumvpc" {
   enable_dns_hostnames = true
 
 
-tags = {
+/*tags = {
     Name = "ngumvpc"
 }
-
+*/
 }
 
 # internet gateway
